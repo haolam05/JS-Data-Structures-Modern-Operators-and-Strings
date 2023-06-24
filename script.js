@@ -181,3 +181,80 @@ if (orderPizza) {
   orderPizza('mushroom', 'tomato', 'olives');
 }
 orderPizza && orderPizza('mushroom', 'tomato', 'olives');
+
+// Nullish Coalescing operator
+let guests = restaurant.numGuests || 10; // guests = 10
+console.log(guests);
+restaurant.numGuests = 20;
+guests = restaurant.numGuests || 10; // guests = 20
+console.log(guests);
+restaurant.numGuests = 0;
+guests = restaurant.numGuests || 10; // guests = 10 since 0 is falsy
+console.log(guests);
+// -> To solve this, use nullish operator
+guests = restaurant.numGuests ?? 10; // guests = 0 since 0 is not null or undefined
+console.log(guests);
+
+// Coding Challenge #1
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+const [players1, players2] = game.players;
+console.log(players1, players2);
+const [gk, ...fieldPlayers] = players1;
+console.log(gk, fieldPlayers);
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(players1Final);
+// const { team1, x: draw, team2 } = game.odds; // method 1
+const {
+  odds: { team1, x: draw, team2 },
+} = game; // method 2
+console.log(team1, draw, team2);
+const printGoals = function (...playerNames) {
+  console.log(playerNames);
+  console.log(`${playerNames.length} goals was scored!`);
+};
+printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+printGoals(...game.scored);
+team1 < team2 && console.log('Team 1 is more likely to win');
+team1 > team2 && console.log('Team 2 is more likely to win');
