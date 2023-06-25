@@ -258,3 +258,44 @@ printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
 printGoals(...game.scored);
 team1 < team2 && console.log('Team 1 is more likely to win');
 team1 > team2 && console.log('Team 2 is more likely to win');
+
+// For of loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+for (const item of menu) console.log(item);
+// with index
+for (const item of menu.entries()) console.log(item);
+for (const [idx, item] of menu.entries()) console.log(`${idx + 1}: ${item}`);
+
+// Enhanced object literal
+// property name
+const openHours = { mon: 'm', tue: 't' };
+const restaurant2 = { owner: 'Hao', openHours };
+console.log(restaurant2);
+// function
+const restaurant3 = {
+  owner: 'Hao',
+  order1: function () {
+    console.log('Order is placed!');
+  },
+  order2() {
+    console.log('Order is placed!');
+  },
+};
+console.log(restaurant3);
+console.log(restaurant3.order1());
+console.log(restaurant3.order2());
+// computed property name
+const weekdays = ['mon', 'tue', 'wed', 'fri'];
+const openH = { [weekdays[0]]: 'm', [weekdays[1]]: 't', [`day-${2 + 4}`]: 'w' };
+console.log(openH);
+
+// Optional Chaining
+console.log(restaurant?.openingHours?.mon?.open);
+console.log(restaurant?.openingHours?.mon);
+console.log(restaurant?.openingHours);
+// methods
+console.log(restaurant.order?.(0, 1)) ?? 'method does not exist';
+//arrays
+const users = [{ name: 'hao' }];
+console.log(users[0]?.name);
+
