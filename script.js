@@ -325,3 +325,53 @@ for (const scorer of game.scored) {
   scores[scorer] ? scores[`${scorer}`]++ : (scores[scorer] = 1);
 }
 console.log(scores);
+
+// Set
+const set = new Set([1, 2, 3, 4]);
+console.log(set.size);
+console.log(set.has(3));
+console.log(set.add(5));
+console.log(set.add(5));
+console.log(set.delete(1));
+console.log(set);
+for (const el of set) console.log(el);
+set.clear();
+console.log(set);
+console.log(new Set('HaoLam'));
+const arr1 = [1, 2, 2, 3, 3, 4, 4, 4, 5];
+console.log(new Set(arr1));
+console.log([...new Set(arr1)]); // turns set into array
+
+// Maps
+const map = new Map();
+map.set('name', 'Hao');
+console.log(map);
+map.set(2001, 'birthYear');
+console.log(map);
+map.set(true, 22).set(false, 17).set('favNums', [5, 11]); // map#set returns the updated map
+console.log(map);
+console.log(map.get(true));
+console.log(map.get(2001));
+const array = [1, 2];
+map.set(array, 'array');
+console.log(map.get(array));
+map.delete(true);
+console.log(map);
+console.log(map.has(false));
+console.log(map.size);
+map.clear();
+console.log(map);
+const map2 = new Map([
+  [1, 'Java'],
+  [2, 'Javascript'],
+  [true, 'good'],
+]);
+console.log(map2);
+// object to map
+const map3 = new Map(Object.entries(restaurant));
+console.log(map3);
+// map to array
+console.log([...map3]);
+console.log([...map3.keys()]);
+console.log([...map3.values()]);
+for (const [key, value] of map2) console.log([key, value]);
