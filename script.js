@@ -299,3 +299,29 @@ console.log(restaurant.order?.(0, 1)) ?? 'method does not exist';
 const users = [{ name: 'hao' }];
 console.log(users[0]?.name);
 
+// Looping over objects
+console.log(Object.keys(openingHours));
+console.log(Object.values(openingHours));
+for (const [day, { open, close }] of Object.entries(openingHours)) {
+  console.log(`On ${day}, we open at ${open} and close at ${close}`);
+}
+
+// Coding Challenge #2
+for (const [idx, player] of game.scored.entries()) {
+  console.log(`Goal ${idx + 1}: ${player}`);
+}
+let sum = 0;
+const odds = Object.values(game.odds);
+for (const odd of odds) {
+  sum += odd;
+}
+console.log(`Average odd: ${sum / odds.length}`);
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr}: ${odd}`);
+}
+const scores = {};
+for (const scorer of game.scored) {
+  scores[scorer] ? scores[`${scorer}`]++ : (scores[scorer] = 1);
+}
+console.log(scores);
